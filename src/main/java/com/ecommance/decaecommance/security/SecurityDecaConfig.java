@@ -13,8 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-
-
+@Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityDecaConfig {
@@ -25,6 +24,7 @@ public class SecurityDecaConfig {
     //Basic Authentication
 
     //Authentication
+    @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withUsername("user")
                 .username("user")
@@ -49,15 +49,4 @@ public class SecurityDecaConfig {
                 .and()
                 .build();
     }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-
-
-
-
-
 }
